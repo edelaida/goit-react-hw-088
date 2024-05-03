@@ -1,7 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
-import { apiRegister } from "../../redux/auth/slice";
+import { apiRegister } from "../../redux/auth/operations";
 
 const MAX_NAME_VALID = 38;
 const MIN_PASS_VALID = 7;

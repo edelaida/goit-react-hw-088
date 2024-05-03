@@ -3,7 +3,9 @@ import { Suspense, lazy, useEffect } from "react";
 import Loader from "./Loader/Loader";
 import Layout from "./Layout/Layout";
 import { useDispatch } from "react-redux";
-import { apiRefreshUser } from "../redux/auth/slice";
+import { apiRefreshUser } from "../redux/auth/operations";
+import RestrictedRoute from "./RestrictedRoute/RestrictedRoute";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const RegistrationPage = lazy(() =>
@@ -23,10 +25,30 @@ export const App = () => {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/register" element={<RegistrationPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/contacts" element={<ContactsPage />} />
-          {/* <Route path="*" element={<NotFoundPage />} /> */}
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute>
+                <RegistrationPage />
+              </RestrictedRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RegistrationPage>
+                <LoginPage />
+              </RegistrationPage>
+            }
+          />
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute>
+                <ContactsPage />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </Suspense>
     </Layout>

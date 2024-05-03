@@ -1,7 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
-import { apiLogin } from "../../redux/auth/slice";
+import { apiLogin } from "../../redux/auth/operations";
 
 const MIN_PASS_VALID = 7;
 
@@ -37,7 +37,7 @@ const LoginPage = () => {
       onSubmit={handleSubmit}
     >
       <Form>
-        <h2>Login</h2>
+        <h2>Log in</h2>
         <br />
         <label>
           <span>email : </span>
@@ -53,7 +53,7 @@ const LoginPage = () => {
           <ErrorMessage component="p" name="password" />
         </label>
         <br />
-        <button type="submit">▶ Login</button>
+        <button type="submit">▶ Log in</button>
       </Form>
     </Formik>
   );
