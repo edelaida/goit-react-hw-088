@@ -2,13 +2,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchContacts } from "../../redux/contacts/operations";
 import ContactForm from "../../components/ContactForm/ContactForm";
-import SearchBox from "../../components/SearchBox/SearchBox";
+//import SearchBox from "../../components/SearchBox/SearchBox";
 import ContactList from "../../components/ContactList/ContactList";
+import { selectLoading } from "../../redux/contacts/selectors";
+import PageTitle from "../../components/PageTitle/PageTitle";
 
-const ContactsPage = () => {
+export default function ContactsPage() {
   const dispatch = useDispatch();
-  const isLoading = useSelector((state) => state.contacts.isLoading);
-  const error = useSelector((state) => state.contacts.error);
+  const isLoading = useSelector(selectLoading);
+  //const error = useSelector((state) => state.contacts.error);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -16,13 +18,14 @@ const ContactsPage = () => {
   return (
     <div>
       <h1>Phonebook</h1>
-      {isLoading && <p>Loading tasks...</p>}
-      {error && <p>{error}</p>}
+      <PageTitle>Your tasks</PageTitle>
       <ContactForm />
-      <SearchBox />
+      <div>{isLoading && "Loading tasks..."}</div>
+      {/* {error && <p>{error}</p>} */}
+      {/* <SearchBox /> */}
       <ContactList />
     </div>
   );
-};
+}
 
-export default ContactsPage;
+//export default ContactsPage;

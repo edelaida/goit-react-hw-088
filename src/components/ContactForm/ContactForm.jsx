@@ -1,42 +1,32 @@
-import { Field, Form, Formik } from "formik";
-import { nanoid } from "nanoid";
+//import { Field, Form, Formik } from "formik";
+//import { nanoid } from "nanoid";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
+import css from "./ContactForm.module.css";
 
-const FORM_INITIAL = {
-  name: "",
-  number: "",
-};
-
-const ContactForm = () => {
+export default function ContactForm() {
   const dispatch = useDispatch();
 
-  const handleSubmit = (values, actions) => {
-    const finalUser = { ...values, id: nanoid() };
-    dispatch(addContact(finalUser));
-    actions.resetForm();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const text = form.elements.text.value;
+    if (text !== "") {
+      dispatch(addContact(text));
+      form.reset();
+      return;
+    }
+    alert("Task cannot be empty. Enter some text!");
   };
 
   return (
-    <Formik initialValues={FORM_INITIAL} onSubmit={handleSubmit}>
-      <Form>
-        <h2>Add new user</h2>
-        <label>
-          <span>Name : </span>
-          <br />
-          <Field type="text" name="name" />
-        </label>
-        <br />
-        <label>
-          <span>Telephone : </span>
-          <br />
-          <Field type="text" name="number" />
-        </label>
-        <br />
-        <button type="submit">▶ Create new user</button>
-      </Form>
-    </Formik>
+    <form className={css.form} onSubmit={handleSubmit}>
+      <input name="text" className={css.input} />
+      <button type="submit" className={css.button}>
+        Add task
+      </button>
+    </form>
   );
-};
+}
 
-export default ContactForm;
+// export default ContactForm;

@@ -1,4 +1,16 @@
-.kino {
+.link {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  font-weight: 700;
+  color: #2a363b;
+}
+
+.link.active {
+  color: #e84a5f;
+}
+
+/* .kino {
   padding-top: 10px;
   padding-left: 50px;
   padding-bottom: 10px;
@@ -19,4 +31,4 @@
 .active {
   background-color: rgb(73, 50, 50);
   color: white;
-}
+} */

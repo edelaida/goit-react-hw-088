@@ -4,13 +4,13 @@ const INITAL_STATE = {
   contacts: {
     items: [],
   },
-  filters: {
+  filter: {
     name: "",
   },
 };
 const searchSlice = createSlice({
-  name: "filters",
-  initialState: INITAL_STATE.filters,
+  name: "filter",
+  initialState: INITAL_STATE.filter,
   reducers: {
     changeFilter(state, action) {
       state.name = action.payload;
@@ -19,5 +19,5 @@ const searchSlice = createSlice({
 });
 
 export const { changeFilter } = searchSlice.actions;
-export const filtersReducer = searchSlice.reducer;
-export const selectNameFilter = (state) => state.filters.name;
+export const filterReducer = searchSlice.reducer;
+export const selectNameFilter = (state) => state.filter.name;

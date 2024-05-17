@@ -1,7 +1,13 @@
-//import React from "react";
+import PageTitle from "../../components/PageTitle/PageTitle";
 
-const HomePage = () => {
-  return <div>HomePage</div>;
-};
+export default function HomePage() {
+  return (
+    <div>
+      <h1>HomePage</h1>
+      <PageTitle>Welcome </PageTitle>
+      <p>Task manager welcome page</p>
+    </div>
+  );
+}
 
-export default HomePage;
+//export default HomePage;
