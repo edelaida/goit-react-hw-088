@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "cardNumber": "1234 5678 9012 3456",
+    "cardType": "Visa",
+    "cardOwner": "John Doe",
+    "date": "2024-02-03",
+    "amount": 100,
+    "description": "Payment for groceries",
+    "isPaid": true
+  },
+  {
+    "id": "2",
+    "cardNumber": "5690 4411 9382 5556",
+    "cardType": "Mastercard",
+    "cardOwner": "Alice Smith",
+    "date": "2024-01-06",
+    "amount": 50,
+    "description": "Payment for utilites",
+    "isPaid": false
+  }
+]

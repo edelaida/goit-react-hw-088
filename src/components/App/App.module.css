@@ -1,0 +1,16 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.text {
+  font-size: 24px;
+}
+img {
+  width: 80px;
+}
+.icon {
+  width: 48px;
+  height: 48px;
+  color: red;
+}

@@ -1,0 +1,12 @@
+.btn {
+  padding: 12px;
+  font-size: 20px;
+}
+.primary {
+  background-color: blue;
+  color: azure;
+}
+.secondary {
+  background-color: chartreuse;
+  color: azure;
+}
