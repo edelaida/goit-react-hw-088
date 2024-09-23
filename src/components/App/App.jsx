@@ -1,35 +1,45 @@
 import { HiArrowCircleDown } from "react-icons/hi";
-import PaymentLis from "../PaymentList/PaymentList";
+//import PaymentLis from "../PaymentList/PaymentList";
 import PageTitle from "../PageTitle/PageTitle";
-import Button from "../Button/Button";
-import Reader from "../Reader/Reader";
-import initialPayments from "../../payments.json";
-import articles from "../../articles.json";
-import { useState } from "react";
+// import Button from "../Button/Button";
+// import Reader from "../Reader/Reader";
+// import Timer from "../Timer/Timer";
+// import initialPayments from "../../payments.json";
+// import articles from "../../articles.json";
+//import { useState } from "react";
 import css from "./App.module.css";
-import zvtr from "../../assets/zavtrak.jpg";
-import ClickCounter from "../ClickCounter/ClickCounter";
-import Togler from "../Toggler/Togler";
+import UserForm from "../UserForm/UserForm";
+// import zvtr from "../../assets/zavtrak.jpg";
+// import ClickCounter from "../ClickCounter/ClickCounter";
+// import Togler from "../Toggler/Togler";
 
 export default function App() {
-  const [text, setText] = useState("");
-  const [clicks, setClick] = useState(0);
+  //const [text, setText] = useState("");
+  // const [isTimerVisible, setIsTimerVisible] = useState(false);
 
-  const handleClick = () => {
-    setClick(clicks + 1);
-  };
-  const handleChange = (event) => {
-    setText(event.target.value);
-  };
+  // const handleChange = (event) => {
+  //   setText(event.target.value);
+  // };
 
+  const handleAdd = (newUser) => {
+    console.log(newUser);
+  };
   return (
     <div className={css.container}>
       <PageTitle>
         Styling React Components
         <HiArrowCircleDown className={css.icon} />
       </PageTitle>
-      <img src={zvtr} alt="" />
-      <ClickCounter value={clicks} on onUpdate={handleClick} />
+      <UserForm onAdd={handleAdd} />
+      {/* <img src={zvtr} alt="" />
+      <hr />
+      <ClickCounter />
+      <hr />
+      {isTimerVisible && <Timer />}
+      <button onClick={() => setIsTimerVisible(!isTimerVisible)}>
+        {isTimerVisible ? "Hide" : "Show"}
+      </button>
+      <hr />
       <Togler />
       <Togler />
       <input type="text" onChange={handleChange} />
@@ -41,7 +51,9 @@ export default function App() {
       <hr />
       <Reader items={articles} />
       <hr />
-      <PaymentLis payments={initialPayments} />
+      <PaymentLis payments={initialPayments} /> */}
     </div>
   );
 }
+
+// <ClickCounter value={clicks} onUpdate={handleClick} />
