@@ -1,3 +1,7 @@
 .text {
   font-size: 32px;
 }
+.group {
+  display: flex;
+  flex-direction: column;
+}
