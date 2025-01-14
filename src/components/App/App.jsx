@@ -1,7 +1,7 @@
 import { HiArrowCircleDown } from "react-icons/hi";
 //import PaymentLis from "../PaymentList/PaymentList";
 import PageTitle from "../PageTitle/PageTitle";
-import { CustomModal } from "../CustomModal/CustomModal.jsx";
+//import { CustomModal } from "../CustomModal/CustomModal.jsx";
 // import Button from "../Button/Button";
 // import Reader from "../Reader/Reader";
 // import Timer from "../Timer/Timer";
@@ -11,6 +11,7 @@ import { CustomModal } from "../CustomModal/CustomModal.jsx";
 import css from "./App.module.css";
 //import UserForm from "../UserForm/UserForm";
 import { useState } from "react";
+import { EditModal } from "../CustomModal/EditModal.jsx";
 // import zvtr from "../../assets/zavtrak.jpg";
 // import ClickCounter from "../ClickCounter/ClickCounter";
 // import Togler from "../Toggler/Togler";
@@ -35,11 +36,13 @@ export default function App() {
       <PageTitle>
         Styling React Components
         <HiArrowCircleDown className={css.icon} />
-        </PageTitle>
-        <CustomModal isOpen={modalIsOpen} onClose={() => setModalIsOpen (false)}>         
-        </CustomModal>
-        {/* <UserForm onAdd={handleAdd} /> */}
-             
+      </PageTitle>
+      <EditModal isOpen={modalIsOpen} onClose={() => setModalIsOpen (false)}/>
+      
+      {/* <CustomModal isOpen={modalIsOpen} onClose={() => setModalIsOpen (false)}>
+      </CustomModal> */}
+      
+        {/* <UserForm onAdd={handleAdd} /> */}             
       {/* <img src={zvtr} alt="" />
       <hr />
       <ClickCounter />
