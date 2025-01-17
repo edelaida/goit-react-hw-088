@@ -1,6 +1,4 @@
-import { HiArrowCircleDown } from "react-icons/hi";
 //import PaymentLis from "../PaymentList/PaymentList";
-import PageTitle from "../PageTitle/PageTitle";
 //import { CustomModal } from "../CustomModal/CustomModal.jsx";
 // import Button from "../Button/Button";
 // import Reader from "../Reader/Reader";
@@ -8,13 +6,19 @@ import PageTitle from "../PageTitle/PageTitle";
 // import initialPayments from "../../payments.json";
 // import articles from "../../articles.json";
 //import { useState } from "react";
-import css from "./App.module.css";
 //import UserForm from "../UserForm/UserForm";
-import { useState } from "react";
-import { EditModal } from "../CustomModal/EditModal.jsx";
 // import zvtr from "../../assets/zavtrak.jpg";
 // import ClickCounter from "../ClickCounter/ClickCounter";
 // import Togler from "../Toggler/Togler";
+
+import { HiArrowCircleDown } from "react-icons/hi";
+import css from "./App.module.css";
+import PageTitle from "../PageTitle/PageTitle";
+import { useState } from "react";
+import { EditModal } from "../CustomModal/EditModal.jsx";
+//import { CustomModal } from "../CustomModal/CustomModal.jsx";
+ 
+ 
 
 export default function App() {
   //const [text, setText] = useState("");
@@ -23,25 +27,28 @@ export default function App() {
   // const handleChange = (event) => {
   //   setText(event.target.value);
   // };
-  
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  // const handleAdd = (newUser) => {
+   // const handleAdd = (newUser) => {
   //    console.log(newUser);
   // };
+  // const data={
+  //   id: 21,
+  //   count: 250,
+  //   time: '12:20',
+  //   }
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   return (
     <div className={css.container}>     
-     
-      <button className={css.mshow}
-        onClick={() => setModalIsOpen(true)}>Modal</button>
+       <button className={css.mshow}
+        onClick={() => setModalIsOpen(true)}>Modal</button>      
       <PageTitle>
         Styling React Components
         <HiArrowCircleDown className={css.icon} />
       </PageTitle>
-      <EditModal isOpen={modalIsOpen} onClose={() => setModalIsOpen (false)}/>
       
-      {/* <CustomModal isOpen={modalIsOpen} onClose={() => setModalIsOpen (false)}>
-      </CustomModal> */}
-      
+      {/* <CustomModal isOpen={modalIsOpen} onClose={() => setModalIsOpen (false)}/> */}
+      <EditModal  isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} />
+                  
         {/* <UserForm onAdd={handleAdd} /> */}             
       {/* <img src={zvtr} alt="" />
       <hr />

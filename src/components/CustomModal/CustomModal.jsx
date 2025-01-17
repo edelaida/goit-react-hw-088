@@ -1,25 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from "react-modal";
-//import { ReactComponent as CloseIcon } from "./CloseIcon.svg";
+import  CloseIcon from "./x.svg";
 import css from "./CustomModal.module.css";
 
-export const CustomModal = ({ isOpen, onClose }) => {
-    const [count, setCount] = useState(50);
-    const [valtime, setValtime] = useState(new Date().toLocaleTimeString());
+  
+
+export const CustomModal = ({ isOpen, onClose, onSave }) => {
+       const [state, setState] = useState( {
+        count: 50,
+        time: new Date().toLocaleTimeString("ua-UA", { hour: "2-digit", minute: "2-digit", timeZone: "UTC", }),
+        })
     
-    // const timeMinut = new Date().getMinutes();
-    // const timeHours = new Date().getHours();
-      
     function increment() {
-        setCount(count + 50);
+        if (state.count < 5000) {
+            setState({ ...state, count: state.count + 50 })
+        };
     }
     function decrement() {
-        if (count>50) { 
-        setCount(count - 50)};
+        if (state.count > 50) { 
+        setState({ ...state, count: state.count - 50})};
     }
     const change = event => {
-        setValtime(event.target.value)
-    }        
+        setState({ ...state, time: event.target.value });
+    } 
             
     return (
         <Modal
@@ -29,23 +32,21 @@ export const CustomModal = ({ isOpen, onClose }) => {
             closeTimeoutMS={300}
             onRequestClose={()=>onClose()}
             ariaHideApp={false} >
-            <buttom className={css.mclose} onClick={()=>onClose()}><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2 2L16 16" stroke="#2F2F2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-</svg></buttom>
+            <buttom className={css.mclose} onClick={()=>onClose()}><img src={CloseIcon} alt=''/></buttom>
             <h2 className={css.water} >Add water</h2>
             <p className={css.choose} >Choose a value</p>
-            <p className={css.amount}>Amount of water</p>
+            <p className={css.amount}>Amount of water</p>           
             <div className={css.countsum} > 
             <button className={css.incrbut}  onClick={increment} >+</button>
-            <span className={css.incrcount}>{count} ml</span>
+            <span className={css.incrcount}>{state.count} ml</span>
             <button className={css.incrbut} onClick={decrement} >-</button>
-            </div>
+            </div>            
             <p className={css.recording}>Recording time</p>
-            <input className={css.inputtime} onChange={change} type="string" value={valtime} />
+            <input className={css.inputtime} onChange={change} type="string" value={state.time} />
             
             <p className={css.enter}>Enter the value of the water used:</p>
-            <input className={css.inputtime}  type="string" value={count} />
-            <button className={css.btnsave} onClick={()=>onClose()}>Save</button>
+            <input className={css.inputtime}  type="string" value={state.count} />
+            <button className={css.btnsave} onClick={()=>onSave(state)}>Save</button>            
         </Modal>
     )
 }
