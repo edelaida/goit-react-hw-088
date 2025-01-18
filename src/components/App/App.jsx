@@ -15,8 +15,8 @@ import { HiArrowCircleDown } from "react-icons/hi";
 import css from "./App.module.css";
 import PageTitle from "../PageTitle/PageTitle";
 import { useState } from "react";
-import { EditModal } from "../CustomModal/EditModal.jsx";
-//import { CustomModal } from "../CustomModal/CustomModal.jsx";
+//import { EditModal } from "../CustomModal/EditModal.jsx";
+import { CustomModal } from "../CustomModal/CustomModal.jsx";
  
  
 
@@ -46,8 +46,8 @@ export default function App() {
         <HiArrowCircleDown className={css.icon} />
       </PageTitle>
       
-      {/* <CustomModal isOpen={modalIsOpen} onClose={() => setModalIsOpen (false)}/> */}
-      <EditModal  isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} />
+      <CustomModal isOpen={modalIsOpen} onClose={() => setModalIsOpen (false)}/>
+      {/* <EditModal  isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} /> */}
                   
         {/* <UserForm onAdd={handleAdd} /> */}             
       {/* <img src={zvtr} alt="" />
