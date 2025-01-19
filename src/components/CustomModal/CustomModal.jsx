@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-//import Modal from "react-modal";
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup'
-import  CloseIcon from "./x.svg";
 import css from "./CustomModal.module.css";
-//import { useDispatch } from 'react-redux';
- 
+
+
 const initialValue ={
     count: 50,
     time: new Date().toLocaleTimeString("ua-UA", { hour: "2-digit", minute: "2-digit", timeZone: "UTC", }),
@@ -46,7 +44,7 @@ export const CustomModal = ({ closeModal }) => {
                 onClick={closeModal}     
             >
             <div className={css.mcontent} onClick={e => e.stopPropagation()} >    
-            <buttom className={css.mclose} onClick={closeModal}><img src={CloseIcon} alt=''/></buttom>
+            <buttom className={css.mclose} onClick={closeModal}>X</buttom>
             <h2 className={css.water} >Add water</h2>
             <p className={css.choose} >Choose a value</p>
             <p className={css.amount}>Amount of water</p>           
