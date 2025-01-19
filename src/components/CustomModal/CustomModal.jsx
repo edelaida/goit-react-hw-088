@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import Modal from "react-modal";
+import React, { useState } from 'react';
+//import Modal from "react-modal";
+import { Field, Form, Formik } from 'formik';
+import * as Yup from 'yup'
 import  CloseIcon from "./x.svg";
 import css from "./CustomModal.module.css";
-import { useDispatch } from 'react-redux';
+//import { useDispatch } from 'react-redux';
+ 
+const initialValue ={
+    count: 50,
+    time: new Date().toLocaleTimeString("ua-UA", { hour: "2-digit", minute: "2-digit", timeZone: "UTC", }),
+    }
 
-  
-
-export const CustomModal = ({ isOpen, onClose }) => {
-       const [water, setWater] = useState( {
-        count: 50,
-        time: new Date().toLocaleTimeString("ua-UA", { hour: "2-digit", minute: "2-digit", timeZone: "UTC", }),
-        })
-    const dispatch = useDispatch()
+export const CustomModal = ({ closeModal }) => {
+    const [water, setWater] = useState(initialValue)   
     
     function increment() {
         if (water.count < 5000) {
@@ -25,27 +26,27 @@ export const CustomModal = ({ isOpen, onClose }) => {
     const change = event => {
         setWater({ ...water, time: event.target.value });
     } 
-    const date = new Date().toISOString().split("T")[water.time];
-    //   date+${time}
-     // toString
-    console.log(date);
-    
-    const handleSave = () => {
-        const body = {date: date, volume: water.count, };
-        dispatch(addWater(body));
-    };
-    console.log(body);
-    
-                 
+    const handleSubmit = (values, actions) => {
+		console.log(values);
+		actions.resetForm();
+	};
+         
+    const validationSchema = Yup.object().shape({
+        count: Yup.number(),
+        time: Yup.string().max(5),
+    })
     return (
-        <Modal
-            isOpen={isOpen}
-            overlayClassName={css.moverlay}  
-            className={css.mcontent}
-            closeTimeoutMS={300}
-            onRequestClose={()=>onClose()}
-            ariaHideApp={false} >
-            <buttom className={css.mclose} onClick={()=>onClose()}><img src={CloseIcon} alt=''/></buttom>
+        <Formik
+            validationSchema={validationSchema}
+            initialValues={initialValue}
+            onSubmit={handleSubmit}            
+           >
+            <Form                 
+                className={css.moverlay}  
+                onClick={closeModal}     
+            >
+            <div className={css.mcontent} onClick={e => e.stopPropagation()} >    
+            <buttom className={css.mclose} onClick={closeModal}><img src={CloseIcon} alt=''/></buttom>
             <h2 className={css.water} >Add water</h2>
             <p className={css.choose} >Choose a value</p>
             <p className={css.amount}>Amount of water</p>           
@@ -55,11 +56,13 @@ export const CustomModal = ({ isOpen, onClose }) => {
             <button className={css.incrbut} onClick={decrement} >-</button>
             </div>            
             <p className={css.recording}>Recording time</p>
-            <input className={css.inputtime} onChange={change} type="string" value={water.time} />
+            <Field className={css.inputtime} onChange={change} type="string" maxlength="5" value={water.time} />
             
             <p className={css.enter}>Enter the value of the water used:</p>
-            <input className={css.inputtime}  type="string" value={water.count} />
-            <button className={css.btnsave} onClick={handleSave}>Save</button>            
-        </Modal>
+            <Field className={css.inputtime}  type="string" value={water.count} />
+                <button className={css.btnsave} type="submit" onClick={() => onClose(water)}>Save</button>            
+                </div>     
+            </Form>
+        </Formik>
     )
 }

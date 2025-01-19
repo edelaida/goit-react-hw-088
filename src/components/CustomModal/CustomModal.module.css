@@ -36,7 +36,7 @@ p {
     flex-grow: 1;
 }
 
-.mcontent {
+.mcontent {   
     position: relative;
     display: flex;
     flex-direction: column;
@@ -111,7 +111,7 @@ letter-spacing: -0.01em;
 }
 
 .incrcount{    
-    width: 92px;
+    min-width: 92px;
     height: 43px;
     padding: 11px 20px 11px 20px;
     border-radius: 30px;    

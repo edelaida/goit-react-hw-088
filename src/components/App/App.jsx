@@ -36,17 +36,19 @@ export default function App() {
   //   time: '12:20',
   //   }
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const openModal = () => setModalIsOpen(true);
+  const closeModal = () => setModalIsOpen(false);
 
   return (
     <div className={css.container}>     
        <button className={css.mshow}
-        onClick={() => setModalIsOpen(true)}>Modal</button>      
+        onClick={openModal}>Modal</button>      
       <PageTitle>
         Styling React Components
         <HiArrowCircleDown className={css.icon} />
       </PageTitle>
-      
-      <CustomModal isOpen={modalIsOpen} onClose={() => setModalIsOpen (false)}/>
+      {modalIsOpen && ( 
+      <CustomModal closeModal={closeModal}/>)}
       {/* <EditModal  isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} /> */}
                   
         {/* <UserForm onAdd={handleAdd} /> */}             
